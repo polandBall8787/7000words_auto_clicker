@@ -1,0 +1,202 @@
+[
+    {
+        "question": "快的；迅速的；敏捷的 (adj.)",
+        "answer": "quick"
+    },
+    {
+        "question": "安靜的；寧靜的 (adj.)",
+        "answer": "quiet"
+    },
+    {
+        "question": "賽跑；比賽 (n.)",
+        "answer": "race"
+    },
+    {
+        "question": "人種；種族；民族 (n.)",
+        "answer": "race"
+    },
+    {
+        "question": "無線電；無線電廣播臺 (n.)",
+        "answer": "radio"
+    },
+    {
+        "question": "鐵路；鐵路公司 (n.)",
+        "answer": "railroad"
+    },
+    {
+        "question": "雨；雨水；一場雨 (n.)",
+        "answer": "rain"
+    },
+    {
+        "question": "舉起；抬起；養育 (v.)",
+        "answer": "raise"
+    },
+    {
+        "question": "鼠 (n.)；捕鼠 (v.)",
+        "answer": "rat"
+    },
+    {
+        "question": "抵達；到達；達到 (v.)",
+        "answer": "reach"
+    },
+    {
+        "question": "讀；閱讀；朗讀 (v.)",
+        "answer": "read"
+    },
+    {
+        "question": "準備好的；樂意的 (adj.)；預備 (v.)",
+        "answer": "ready"
+    },
+    {
+        "question": "真正的；實際的；完全的 (adj.)",
+        "answer": "real"
+    },
+    {
+        "question": "理由；原因 (n.)；推論；思考 (v.)",
+        "answer": "reason"
+    },
+    {
+        "question": "收到；接到；接待 (v.)",
+        "answer": "receive"
+    },
+    {
+        "question": "記得；想起；牢記 (v.)",
+        "answer": "remember"
+    },
+    {
+        "question": "休息；休養 (n.)；使休息；使輕鬆 (v.)",
+        "answer": "rest"
+    },
+    {
+        "question": "返回；歸歸 (v.)",
+        "answer": "return"
+    },
+    {
+        "question": "稻；穀 (n.)",
+        "answer": "rice"
+    },
+    {
+        "question": "有錢的；富有的 (adj.)",
+        "answer": "rich"
+    },
+    {
+        "question": "騎馬；乘坐；搭坐 (v.)",
+        "answer": "ride"
+    },
+    {
+        "question": "右邊的；右側的 (adj.)",
+        "answer": "right"
+    },
+    {
+        "question": "右邊；右面 (n.)",
+        "answer": "right"
+    },
+    {
+        "question": "戒指；耳環；環形物 (n.)",
+        "answer": "ring"
+    },
+    {
+        "question": "鐘鳴；鈴響 (v.)；鈴聲；鐘聲 (n.)",
+        "answer": "ring"
+    },
+    {
+        "question": "上升；升高；增加 (v.)",
+        "answer": "rise"
+    },
+    {
+        "question": "江；河；大量 (n.)",
+        "answer": "river"
+    },
+    {
+        "question": "機器人 (n.)",
+        "answer": "robot"
+    },
+    {
+        "question": "搖動；擺動；振動 (v.)",
+        "answer": "rock"
+    },
+    {
+        "question": "滾動；打滾；轉動 (v.)",
+        "answer": "roll"
+    },
+    {
+        "question": "屋頂；車頂 (n.)",
+        "answer": "roof"
+    },
+    {
+        "question": "房間；空間；場所 (n.)",
+        "answer": "room"
+    },
+    {
+        "question": "根；地下莖 (n.)",
+        "answer": "root"
+    },
+    {
+        "question": "繩索 (n.)；捆紮；縛；綁 (v.)",
+        "answer": "rope"
+    },
+    {
+        "question": "薔薇花；玫瑰花 (n.)",
+        "answer": "rose"
+    },
+    {
+        "question": "圓的；球形的 (adj.)；環繞地 (adv.)；一輪；一回合 (n.)",
+        "answer": "round"
+    },
+    {
+        "question": "列；排；街；路 (n.)",
+        "answer": "row"
+    },
+    {
+        "question": "划船 (v.)；划船 (n.)",
+        "answer": "row"
+    },
+    {
+        "question": "摩擦；擦到 (v.)；阻難；疑難點 (n.)",
+        "answer": "rub"
+    },
+    {
+        "question": "橡膠；合成橡膠 (n.)",
+        "answer": "rubber"
+    },
+    {
+        "question": "規則；條例 (n.)；統治；管轄 (v.)",
+        "answer": "rule"
+    },
+    {
+        "question": "跑；奔；跑步 (v.)",
+        "answer": "run"
+    },
+    {
+        "question": "悲哀的；令人悲痛的；可悲的 (adj.)",
+        "answer": "sad"
+    },
+    {
+        "question": "安全的；平安的；無害的 (adj.)",
+        "answer": "safe"
+    },
+    {
+        "question": "帆；篷 (n.)；航行；啟航 (v.)",
+        "answer": "sail"
+    },
+    {
+        "question": "賣；出售；拍賣 (n.)",
+        "answer": "sale"
+    },
+    {
+        "question": "鹽 (n.)",
+        "answer": "salt"
+    },
+    {
+        "question": "同一的；同樣的 (adj.)",
+        "answer": "same"
+    },
+    {
+        "question": "沙；沙灘；沙洲 (n.)",
+        "answer": "sand"
+    },
+    {
+        "question": "挽救；節省；儲蓄 (v.)",
+        "answer": "save"
+    }
+]

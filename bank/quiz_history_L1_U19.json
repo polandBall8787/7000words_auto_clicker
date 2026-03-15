@@ -1,0 +1,190 @@
+[
+    {
+        "question": "這個；那些(art.)",
+        "answer": "the"
+    },
+    {
+        "question": "他們的；她們的；它們的(pron.)",
+        "answer": "their"
+    },
+    {
+        "question": "他們的東西(pron.)",
+        "answer": "theirs"
+    },
+    {
+        "question": "他們；她們；它們(pron.)",
+        "answer": "them"
+    },
+    {
+        "question": "那時；當時；接著(adv.)",
+        "answer": "then"
+    },
+    {
+        "question": "在那裡；到那裡(adv.)",
+        "answer": "there"
+    },
+    {
+        "question": "這些(pron.)",
+        "answer": "these"
+    },
+    {
+        "question": "他們；她們；它們(pron.)",
+        "answer": "they"
+    },
+    {
+        "question": "物；東西(n.)",
+        "answer": "thing"
+    },
+    {
+        "question": "想；思索(v.)",
+        "answer": "think"
+    },
+    {
+        "question": "第三的；第三(adj./n.)",
+        "answer": "third"
+    },
+    {
+        "question": "十三的；十三(adj./n.)",
+        "answer": "thirteen"
+    },
+    {
+        "question": "三十的；三十(adj./n.)",
+        "answer": "thirty"
+    },
+    {
+        "question": "這；這個(pron.)",
+        "answer": "this"
+    },
+    {
+        "question": "那些(pron.)",
+        "answer": "those"
+    },
+    {
+        "question": "雖然；儘管(conj.)",
+        "answer": "though"
+    },
+    {
+        "question": "思維；思考；想法(n.)",
+        "answer": "thought"
+    },
+    {
+        "question": "一千的；一千(adj./n.)",
+        "answer": "thousand"
+    },
+    {
+        "question": "三的；三個(adj./n.)",
+        "answer": "three"
+    },
+    {
+        "question": "投；擲；拋；扔(v.)",
+        "answer": "throw"
+    },
+    {
+        "question": "星期四(n.)",
+        "answer": "Thursday"
+    },
+    {
+        "question": "如此；這樣；以此方式(adv.)",
+        "answer": "thus"
+    },
+    {
+        "question": "票；入場券；罰單(n.)",
+        "answer": "ticket"
+    },
+    {
+        "question": "繫上；拴(v.) 領帶；繩索(n.)",
+        "answer": "tie"
+    },
+    {
+        "question": "虎；強悍的人(n.)",
+        "answer": "tiger"
+    },
+    {
+        "question": "時間；一段時光(n.)",
+        "answer": "time"
+    },
+    {
+        "question": "極小的；微小的(adj.)",
+        "answer": "tiny"
+    },
+    {
+        "question": "疲勞；厭煩(v.) 輪胎(n.)",
+        "answer": "tire"
+    },
+    {
+        "question": "向；往；到(prep.)",
+        "answer": "to"
+    },
+    {
+        "question": "今天(adv.) 現今(n.)",
+        "answer": "today"
+    },
+    {
+        "question": "共同；不間斷地；協力(adv.)",
+        "answer": "together"
+    },
+    {
+        "question": "明天(adv.) 明天；未來(n.)",
+        "answer": "tomorrow"
+    },
+    {
+        "question": "音調；語調；聲調(n.)",
+        "answer": "tone"
+    },
+    {
+        "question": "在今晚(adv.) 今晚(n.)",
+        "answer": "tonight"
+    },
+    {
+        "question": "太；非常；很(adv.)",
+        "answer": "too"
+    },
+    {
+        "question": "工具；器具(n.)",
+        "answer": "tool"
+    },
+    {
+        "question": "頂部(n.) 最重要的(adj.)",
+        "answer": "top"
+    },
+    {
+        "question": "總計的；完全的(adj.)",
+        "answer": "total"
+    },
+    {
+        "question": "接觸；觸摸(v.)",
+        "answer": "touch"
+    },
+    {
+        "question": "向；朝；接近(prep.)",
+        "answer": "toward"
+    },
+    {
+        "question": "鎮；城市(n.)",
+        "answer": "town"
+    },
+    {
+        "question": "玩具；玩物(n.)",
+        "answer": "toy"
+    },
+    {
+        "question": "列車(n.) 訓練；培養(v.)",
+        "answer": "train"
+    },
+    {
+        "question": "樹；喬木(n.)",
+        "answer": "tree"
+    },
+    {
+        "question": "旅行；行程(n.)",
+        "answer": "trip"
+    },
+    {
+        "question": "煩惱；憂慮；困境(n.)",
+        "answer": "trouble"
+    },
+    {
+        "question": "真實的；確實的(adj.)",
+        "answer": "True"
+    }
+]

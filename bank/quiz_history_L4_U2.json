@@ -1,0 +1,198 @@
+[
+    {
+        "question": "焦慮的；掛念的 (adj.)",
+        "answer": "anxious"
+    },
+    {
+        "question": "道歉；認錯 (v.)",
+        "answer": "apologize"
+    },
+    {
+        "question": "道歉；陪罪 (n.)",
+        "answer": "apology"
+    },
+    {
+        "question": "器具；用具；裝置 (n.)",
+        "answer": "appliance"
+    },
+    {
+        "question": "申請人 (n.)",
+        "answer": "applicant"
+    },
+    {
+        "question": "應用；適用；運用 (n.)",
+        "answer": "application"
+    },
+    {
+        "question": "任命；指派 (v.)",
+        "answer": "appoint"
+    },
+    {
+        "question": "欣賞；感謝 (n.)",
+        "answer": "appreciation"
+    },
+    {
+        "question": "適當的；恰當的 (adj.)",
+        "answer": "appropriate"
+    },
+    {
+        "question": "批准；認可 (n.)",
+        "answer": "approval"
+    },
+    {
+        "question": "拱；拱門 (n.)",
+        "answer": "arch"
+    },
+    {
+        "question": "升起；上升 (v.)",
+        "answer": "arise"
+    },
+    {
+        "question": "武器 (n.)",
+        "answer": "arms"
+    },
+    {
+        "question": "喚起；激動；使奮發 (v.)",
+        "answer": "arouse"
+    },
+    {
+        "question": "人工的；人造的 (adj.)",
+        "answer": "artificial"
+    },
+    {
+        "question": "藝術的；美術的 (adj.)",
+        "answer": "artistic"
+    },
+    {
+        "question": "羞愧的；感到難為情的 (adj.)",
+        "answer": "ashamed"
+    },
+    {
+        "question": "方面；觀點 (n.)",
+        "answer": "aspect"
+    },
+    {
+        "question": "阿斯匹靈 (n.)",
+        "answer": "aspirin"
+    },
+    {
+        "question": "集合；召集 (v.)",
+        "answer": "assemble"
+    },
+    {
+        "question": "與會者；集會；集合 (n.)",
+        "answer": "assembly"
+    },
+    {
+        "question": "分配；分派 (v.)",
+        "answer": "assign"
+    },
+    {
+        "question": "援助；幫助 (n.)",
+        "answer": "assistance"
+    },
+    {
+        "question": "協會；社團 (n.)",
+        "answer": "association"
+    },
+    {
+        "question": "以為；假定為 (v.)",
+        "answer": "assume"
+    },
+    {
+        "question": "保證；把握；信心 (n.)",
+        "answer": "assurance"
+    },
+    {
+        "question": "向...保證；擔保 (v.)",
+        "answer": "assure"
+    },
+    {
+        "question": "運動的；體育的 (adj.)",
+        "answer": "athletic"
+    },
+    {
+        "question": "自動存提款機 (abbr.)",
+        "answer": "ATM"
+    },
+    {
+        "question": "大氣；空氣 (n.)",
+        "answer": "atmosphere"
+    },
+    {
+        "question": "原子；微小物 (n.)",
+        "answer": "atom"
+    },
+    {
+        "question": "原子的 (adj.)",
+        "answer": "atomic"
+    },
+    {
+        "question": "裝上；貼上 (v.)",
+        "answer": "attach"
+    },
+    {
+        "question": "吸引；吸引力 (n.)",
+        "answer": "attraction"
+    },
+    {
+        "question": "聽覺的；聲音的 (adj.)",
+        "answer": "audio"
+    },
+    {
+        "question": "權力；職權 (n.)",
+        "answer": "authority"
+    },
+    {
+        "question": "自傳 (n.)",
+        "answer": "autobiography"
+    },
+    {
+        "question": "等候；期待 (v.)",
+        "answer": "await"
+    },
+    {
+        "question": "笨拙的；不熟練的 (adj.)",
+        "answer": "awkward"
+    },
+    {
+        "question": "登山、遠足用的背包 (n.)",
+        "answer": "backpack"
+    },
+    {
+        "question": "禿頭的 (adj.)",
+        "answer": "bald"
+    },
+    {
+        "question": "芭蕾舞 (n.)",
+        "answer": "ballet"
+    },
+    {
+        "question": "破產的 (adj.)",
+        "answer": "bankrupt"
+    },
+    {
+        "question": "買賣；交易 (n.)",
+        "answer": "bargain"
+    },
+    {
+        "question": "障礙；阻礙 (n.)",
+        "answer": "barrier"
+    },
+    {
+        "question": "臉盆；海灣 (n.)",
+        "answer": "basin"
+    },
+    {
+        "question": "電池 (n.)",
+        "answer": "battery"
+    },
+    {
+        "question": "鳥嘴 (n.)",
+        "answer": "beak"
+    },
+    {
+        "question": "光線；光束 (n.)",
+        "answer": "beam"
+    }
+]

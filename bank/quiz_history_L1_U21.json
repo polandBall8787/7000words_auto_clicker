@@ -1,0 +1,202 @@
+[
+    {
+        "question": "在哪裡；往哪裡 (adv.) 哪裡；何處 (pron.)",
+        "answer": "where"
+    },
+    {
+        "question": "是否（引導名詞子句） (conj.)",
+        "answer": "whether"
+    },
+    {
+        "question": "哪一個；哪一些 (pron.)",
+        "answer": "which"
+    },
+    {
+        "question": "當...的時候；和...同時 (conj.)",
+        "answer": "while"
+    },
+    {
+        "question": "一會兒；一段時間 (n.)",
+        "answer": "while"
+    },
+    {
+        "question": "消磨（時光）；輕鬆地度過 (v.)",
+        "answer": "while"
+    },
+    {
+        "question": "白色的；蒼白的 (adj.)",
+        "answer": "white"
+    },
+    {
+        "question": "誰；什麼人 (pron.)",
+        "answer": "who"
+    },
+    {
+        "question": "全部的；整整的 (adj.)",
+        "answer": "whole"
+    },
+    {
+        "question": "誰；什麼人（用作疑問代名詞） (pron.)",
+        "answer": "whom"
+    },
+    {
+        "question": "那個人的；他(她)們的；他（她）們的（用作關係代名詞） (pron.)",
+        "answer": "whose"
+    },
+    {
+        "question": "為什麼 (adv.) 原因；理由 (n.)",
+        "answer": "why"
+    },
+    {
+        "question": "寬闊的；寬鬆的；廣泛的 (adj.)",
+        "answer": "wide"
+    },
+    {
+        "question": "妻子；已婚婦女 (n.)",
+        "answer": "wife"
+    },
+    {
+        "question": "將；願；下決心 (aux.)",
+        "answer": "will"
+    },
+    {
+        "question": "意志；意願；自制力 (n.)",
+        "answer": "will"
+    },
+    {
+        "question": "在...中獲勝；贏得；說服 (v.)",
+        "answer": "win"
+    },
+    {
+        "question": "轉動；上緊...的發條 (v.)",
+        "answer": "wind"
+    },
+    {
+        "question": "(v.) 風；呼吸 (n.)",
+        "answer": "wind"
+    },
+    {
+        "question": "窗戶；櫥窗 (n.)",
+        "answer": "window"
+    },
+    {
+        "question": "葡萄酒；水果酒；酒 (n.)",
+        "answer": "wine"
+    },
+    {
+        "question": "冬季；冷天 (n.)",
+        "answer": "winter"
+    },
+    {
+        "question": "但願；希望；渴望 (v.)",
+        "answer": "wish"
+    },
+    {
+        "question": "成年女子；女性 (n.)",
+        "answer": "woman"
+    },
+    {
+        "question": "木頭；木材；木柴 (n.)",
+        "answer": "wood"
+    },
+    {
+        "question": "樹林；森林 (n.)",
+        "answer": "woods"
+    },
+    {
+        "question": "詞；單字；話 (n.)",
+        "answer": "word"
+    },
+    {
+        "question": "工作；勞動 (n.) 運轉；活動 (v.)",
+        "answer": "work"
+    },
+    {
+        "question": "工人；勞工 (n.)",
+        "answer": "worker"
+    },
+    {
+        "question": "世界；地球；宇宙 (n.)",
+        "answer": "world"
+    },
+    {
+        "question": "蟲；蛀蟲；腸蟲病 (n.)",
+        "answer": "worm"
+    },
+    {
+        "question": "使擔心；發愁 (v.)",
+        "answer": "worry"
+    },
+    {
+        "question": "更壞的；更差的 (adj.)",
+        "answer": "worse"
+    },
+    {
+        "question": "最壞的；最差的 (adj.)",
+        "answer": "worst"
+    },
+    {
+        "question": "寫下；書寫；填寫 (v.)",
+        "answer": "write"
+    },
+    {
+        "question": "作者；作家；記者 (n.)",
+        "answer": "writer"
+    },
+    {
+        "question": "錯誤的；不對的 (adj.)",
+        "answer": "wrong"
+    },
+    {
+        "question": "山芋類植物；馬鈴薯 (n.)",
+        "answer": "yam"
+    },
+    {
+        "question": "一年；年度；學年 (n.)",
+        "answer": "year"
+    },
+    {
+        "question": "黃色的 (adj.) 黃色 (n.)",
+        "answer": "yellow"
+    },
+    {
+        "question": "是 (adv.) 肯定的回答；同意 (n.)",
+        "answer": "yes"
+    },
+    {
+        "question": "昨天 (adv.) 最近；近來 (n.)",
+        "answer": "yesterday"
+    },
+    {
+        "question": "還沒；現在；已經 (adv.)",
+        "answer": "yet"
+    },
+    {
+        "question": "你們（主格）；任何人 (pron.)",
+        "answer": "you"
+    },
+    {
+        "question": "年輕的；幼小的；朝氣蓬勃的 (adj.)",
+        "answer": "young"
+    },
+    {
+        "question": "你的；你們的 (pron.)",
+        "answer": "your"
+    },
+    {
+        "question": "討人厭的；噁心的；不愉快的 (adj.)",
+        "answer": "yucky"
+    },
+    {
+        "question": "好吃的；美味的 (adj.) 美味的東西 (n.)",
+        "answer": "yummy"
+    },
+    {
+        "question": "零；最低點 (n.)",
+        "answer": "zero"
+    },
+    {
+        "question": "動物園 (n.)",
+        "answer": "zoo"
+    }
+]

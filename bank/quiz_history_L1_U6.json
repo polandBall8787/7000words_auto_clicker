@@ -1,0 +1,202 @@
+[
+    {
+        "question": "樓下的 (adj.)、樓下 (n.)",
+        "answer": "downstairs"
+    },
+    {
+        "question": "一打；十二個 (n.)",
+        "answer": "dozen"
+    },
+    {
+        "question": "拉；拖；繪製 (v.)",
+        "answer": "draw"
+    },
+    {
+        "question": "夢 (n.)、做夢 (v.)",
+        "answer": "dream"
+    },
+    {
+        "question": "飲；喝 (v.)",
+        "answer": "drink"
+    },
+    {
+        "question": "司機；馬車夫 (n.)",
+        "answer": "driver"
+    },
+    {
+        "question": "乾的；乾燥的 (adj.)、變乾 (v.)",
+        "answer": "dry"
+    },
+    {
+        "question": "鴨；鴨肉 (n.)",
+        "answer": "duck"
+    },
+    {
+        "question": "鑽入水中；閃避 (n.)",
+        "answer": "ducking"
+    },
+    {
+        "question": "在...期間內 (prep.)",
+        "answer": "during"
+    },
+    {
+        "question": "各自的；每 (adj.)",
+        "answer": "each"
+    },
+    {
+        "question": "老鷹 (n.)",
+        "answer": "eagle"
+    },
+    {
+        "question": "耳；聽覺；聽力 (n.)",
+        "answer": "ear"
+    },
+    {
+        "question": "早的；在前的 (adj.)",
+        "answer": "early"
+    },
+    {
+        "question": "地球；陸地 (n.)",
+        "answer": "earth"
+    },
+    {
+        "question": "容易；輕鬆 (n.)、減輕；緩和 (v.)",
+        "answer": "ease"
+    },
+    {
+        "question": "東方 (n.)、東方的 (adj.)",
+        "answer": "east"
+    },
+    {
+        "question": "容易的；不費力的 (adj.)",
+        "answer": "easy"
+    },
+    {
+        "question": "吃；進食 (v.)",
+        "answer": "eat"
+    },
+    {
+        "question": "邊緣 (n.)、使鋒利 (v.)",
+        "answer": "edge"
+    },
+    {
+        "question": "蛋；雞蛋 (n.)",
+        "answer": "egg"
+    },
+    {
+        "question": "八 (n.)、八個的 (adj.)",
+        "answer": "eight"
+    },
+    {
+        "question": "十八 (n.)、十八的 (adj.)",
+        "answer": "eighteen"
+    },
+    {
+        "question": "八十 (n.)",
+        "answer": "eighty"
+    },
+    {
+        "question": "任一的 (adj.)",
+        "answer": "either"
+    },
+    {
+        "question": "任何一個 (pron.)、或者 (conj.)",
+        "answer": "either"
+    },
+    {
+        "question": "十一的 (adj.)、十一 (n.)",
+        "answer": "eleven"
+    },
+    {
+        "question": "其他；另外 (adj.)",
+        "answer": "else"
+    },
+    {
+        "question": "末尾 (n.)、結束；了結 (v.)",
+        "answer": "end"
+    },
+    {
+        "question": "英國的 (adj.)、英語 (n.)",
+        "answer": "English"
+    },
+    {
+        "question": "足夠的 (adj.)、充分 (n.)",
+        "answer": "enough"
+    },
+    {
+        "question": "進入；參加 (v.)",
+        "answer": "enter"
+    },
+    {
+        "question": "相等的；平等的 (adj.)",
+        "answer": "equal"
+    },
+    {
+        "question": "平坦的；平滑的 (adj.)",
+        "answer": "even"
+    },
+    {
+        "question": "甚至；連 (adv.)",
+        "answer": "even"
+    },
+    {
+        "question": "傍晚；晚上 (n.)",
+        "answer": "evening"
+    },
+    {
+        "question": "始終；總是 (adv.)",
+        "answer": "ever"
+    },
+    {
+        "question": "每一；每個 (adj.)",
+        "answer": "every"
+    },
+    {
+        "question": "檢查；考試 (n.)",
+        "answer": "examination"
+    },
+    {
+        "question": "檢查；細查；測驗 (v.)",
+        "answer": "examine"
+    },
+    {
+        "question": "例子；樣本；樣品 (n.)",
+        "answer": "example"
+    },
+    {
+        "question": "預料；預期；期待；盼望 (v.)",
+        "answer": "expect"
+    },
+    {
+        "question": "眼睛；視力 (n.)",
+        "answer": "eye"
+    },
+    {
+        "question": "臉；面孔 (n.)、面向 (v.)",
+        "answer": "face"
+    },
+    {
+        "question": "事實；真相 (n.)",
+        "answer": "fact"
+    },
+    {
+        "question": "工廠；製造廠 (n.)",
+        "answer": "factory"
+    },
+    {
+        "question": "落下；跌倒 (n.)、降落 (v.)",
+        "answer": "fall"
+    },
+    {
+        "question": "不正確的；謬誤的；不真實的 (adj.)",
+        "answer": "False"
+    },
+    {
+        "question": "家庭；家人 (n.)",
+        "answer": "family"
+    },
+    {
+        "question": "扇子；風扇；狂熱愛好者 (n.)",
+        "answer": "fan"
+    }
+]
