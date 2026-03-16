@@ -1,252 +1,58 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
   <meta charset="UTF-8">
   <style>
-    /* 原有的樣式保留，新增以下內容 */
-    .checkbox-item.missing {
-      color: #ff4d4f; /* 警告紅 */
-      text-decoration: line-through; /* 加刪除線更有感覺 */
-      opacity: 0.7;
-    }
-
-    .checkbox-item.missing input {
-      outline: 2px solid #ff4d4f;
-    }
-
-    /* 提示訊息樣式 */
-    #status-msg {
-      font-size: 12px;
-      margin-top: 5px;
-      text-align: center;
-    }
-    /* 修改按鈕在載入時的樣式 */
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    /* 讓滾動條好看一點 (適用 Chrome/Edge) */
-    .checkbox-container::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .checkbox-container::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 10px;
-    }
-
     :root {
-      --primary-color: #4a90e2;
-      --primary-hover: #357abd;
       --bg-color: #f5f7f9;
       --text-color: #333;
-      --border-radius: 8px;
     }
-
     body {
-      width: 240px;
-      /* 稍微加寬，視覺更舒服 */
+      width: 200px;
       margin: 0;
       padding: 20px;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: var(--primary-color);
-      font-weight: 600;
       text-align: center;
     }
-
-    .form-group {
-      width: 100%;
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: column;
+    h1 {
+      font-size: 18px;
+      color: #4a90e2;
+      margin-top: 0;
     }
-
-    label {
-      font-size: 13px;
-      margin-bottom: 5px;
-      color: #666;
+    #status {
+      font-size: 14px;
+      margin-bottom: 20px;
       font-weight: bold;
     }
-
-    option {
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      background-color: white;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    select {
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      background-color: white;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    select:focus {
-      border-color: var(--primary-color);
-    }
-
-    .button-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    /* 複選框容器 */
-    .checkbox-container {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      max-height: 150px;
-      /* 固定高度 */
-      overflow-y: auto;
-      /* 出現滾動條 */
-      padding: 5px;
-    }
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      padding: 5px 8px;
-      font-size: 14px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    .checkbox-item:hover {
-      background-color: #f0f7ff;
-    }
-
-    .checkbox-item input {
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    /* 全選按鈕樣式 */
-    .select-all-wrapper {
-      display: flex;
-      gap: 5px;
-      margin-top: 5px;
-    }
-
-    #select-all,
-    #deselect-all {
-      background: none;
-      border: none;
-      color: var(--primary-color);
-      font-size: 12px;
-      padding: 2px 5px;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    #deselect-all {
-      color: #888;
-    }
-
-    button {
-      cursor: pointer;
-      border: none;
-      border-radius: var(--border-radius);
-      transition: all 0.2s ease;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* 次要按鈕樣式 */
-    #reload,
-    #load_questions {
-      padding: 8px;
-      background-color: #fff;
-      color: #555;
-      border: 1px solid #ccc;
-      font-size: 13px;
-    }
-
-    #reload:hover,
-    #load_questions:hover {
-      background-color: #eee;
-    }
-
-    /* 主要按鈕樣式 */
-    #start_test {
+    .status-off { color: #888; }
+    .status-on { color: #27ae60; }
+    
+    #toggle_btn {
       width: 100%;
       height: 45px;
-      margin-top: 15px;
-      background-color: var(--primary-color);
+      background-color: #4a90e2;
       color: white;
       font-size: 16px;
-      box-shadow: 0 4px 6px rgba(74, 144, 226, 0.2);
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
     }
-
-    #start_test:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 8px rgba(74, 144, 226, 0.3);
+    #toggle_btn.running {
+      background-color: #e74c3c; /* 執行中變成紅色停止按鈕 */
     }
-
-    #start_test:active {
-      transform: translateY(0);
+    #toggle_btn:hover {
+      opacity: 0.9;
     }
   </style>
 </head>
-
 <body>
-  <h1>7000單自動選擇器</h1>
-
-  <div class="form-group">
-    <label for="level">選擇 Level</label>
-    <select name="level" id="level">
-      <option value="L1">Level 1</option>
-      <option value="L2">Level 2</option>
-      <option value="L3">Level 3</option>
-      <option value="L4">Level 4</option>
-      <option value="L5">Level 5</option>
-      <option value="L6">Level 6</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>選擇 Unit (複選)</label>
-    <div class="checkbox-container" id="unit-list">
-    </div>
-    <div class="select-all-wrapper">
-      <span id="select-all">全選</span> | <span id="deselect-all">取消全選</span>
-    </div>
-  </div>
-
-  <div class="button-group">
-    <button id="reload">重新整理</button>
-    <button id="load_questions">載入題庫</button>
-  </div>
-
-  <button id="start_test">開始測驗</button>
+  <h1>7000單全自動掛機</h1>
+  <div id="status" class="status-off">狀態：等待中...</div>
+  <button id="toggle_btn">啟動自動答題</button>
 
   <script src="popup.js"></script>
 </body>
-
 </html>

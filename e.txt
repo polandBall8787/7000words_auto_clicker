@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="kLR9PqNdYh1okOxmmRyvV7mNXHFBO7zqCJlPBUDj40EjqHtYun15X1MyIYB0iYef">
+    <title>VOC7000</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .custom-border { border: 4px solid black; }
+        .inner-border { border: 2px solid black; }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: black; border-radius: 10px; border: 2px solid white; }
+    </style>
+</head>
+<body class="bg-sky-200 min-h-screen p-2 sm:p-4 font-sans md:scale-95 md:origin-top">
+
+    <header class="flex flex-wrap justify-between items-center gap-3 sm:gap-4 mb-4 sm:mb-6 max-w-6xl mx-auto px-2 sm:px-4">
+        <div class="flex items-center gap-4 sm:gap-6 md:gap-10">
+            <div onclick="location.href='/'" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white custom-border rounded-xl sm:rounded-2xl flex items-center justify-center font-black text-lg sm:text-xl md:text-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-3 cursor-pointer active:translate-y-1 active:shadow-none transition-all flex-shrink-0">
+                VOC
+            </div>
+                <nav class="flex flex-wrap gap-3 sm:gap-5 md:gap-8 font-black text-sm sm:text-base md:text-lg">
+        <a href="/" class="hover:text-sky-700">主頁</a>
+
+        
+        <a href="/levels/" class="hover:text-sky-700">單字卡</a>
+        
+
+        
+        <a href="/quiz/select-mode/" class="border-b-4 border-sky-600">挑戰</a>
+        
+
+        
+        <a href="/analytics/" class="hover:text-sky-700">統計</a>
+        
+    </nav>
+        </div>
+        
+        <div class="flex items-center gap-2 sm:gap-4 font-bold flex-shrink-0">
+            
+                
+                    <div class="relative inline-block">
+                        <button type="button"
+                                onclick="openAnnouncementModal()"
+                                class="custom-border px-4 py-1.5 rounded-xl bg-amber-300 text-black text-xs font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0.5 transition-all">
+                            公告
+                        </button>
+                        
+                    </div>
+                
+
+                <form action="/logout/" method="post" class="inline">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="kLR9PqNdYh1okOxmmRyvV7mNXHFBO7zqCJlPBUDj40EjqHtYun15X1MyIYB0iYef">
+                    <button type="submit" class="custom-border px-4 py-1.5 rounded-xl bg-red-400 text-black text-xs font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0.5 transition-all">
+                        登出
+                    </button>
+                </form>
+
+                <div onclick="location.href='/profile/edit/'" 
+                     class="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 custom-border rounded-full flex items-center justify-center bg-gray-50 overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-pointer hover:rotate-3 transition-transform flex-shrink-0">
+                    
+                        <img src="/media/user_images/ST1130096.png?v=1773572773.840792" class="w-full h-full object-cover">
+                    
+                </div>
+            
+        </div>
+    </header>
+
+    <main>
+        
+<main class="max-w-4xl mx-auto px-3 sm:px-4 mt-4 sm:mt-8 pb-16 sm:pb-20">
+    <div id="quiz-box" class="bg-white custom-border rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 md:p-12 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+        <div class="w-full h-3 sm:h-4 bg-gray-100 rounded-full mb-6 sm:mb-10 border-2 border-black overflow-hidden">
+            <div id="progress-bar" class="h-full bg-sky-400 transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div class="text-center px-2">
+            <p class="font-black text-sky-500 uppercase tracking-widest text-xs sm:text-sm mb-2">題目</p>
+            <h2 id="question-text" class="text-2xl sm:text-4xl md:text-5xl font-black text-black tracking-tighter mb-6 sm:mb-12 italic italic-text break-words">載入中...</h2>
+        </div>
+        
+        <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 transition-all"></div>
+
+        <div id="quiz-controls" class="mt-6 sm:mt-10 flex justify-center">
+            <button onclick="confirmExit()" class="group flex items-center gap-2 text-gray-400 hover:text-red-500 font-black transition-all duration-300 min-h-[44px] py-2">
+                <span class="text-xl">←</span>
+                <span class="uppercase tracking-widest text-xs sm:text-sm border-b-2 border-transparent group-hover:border-red-500">放棄本次測驗 Exit Quiz</span>
+            </button>
+        </div>
+        
+        <div id="click-shield" class="absolute inset-0 z-50 pointer-events-none bg-transparent"></div>
+    </div>
+
+    <div id="result-box" class="hidden animate-in fade-in zoom-in duration-500">
+        <div class="text-center mb-6 sm:mb-8">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black italic tracking-tighter">成績單<span class="text-red-500">!</span></h1>
+            <p class="font-bold text-gray-500 text-sm sm:text-base mt-2">挑戰完成！這是你本次的戰果：</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div class="bg-white custom-border rounded-2xl p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <p class="text-[10px] font-black text-gray-400 uppercase">本次獲得經驗</p>
+                <p id="res-exp" class="text-2xl font-black text-sky-500">+0</p>
+            </div>
+            <div class="bg-white custom-border rounded-2xl p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <p class="text-[10px] font-black text-gray-400 uppercase">獲得金幣 </p>
+                <p id="res-coin" class="text-2xl font-black text-yellow-500">+0</p>
+            </div>
+            <div class="bg-white custom-border rounded-2xl p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <p class="text-[10px] font-black text-gray-400 uppercase">本次總用時</p>
+                <p id="res-total-time" class="text-2xl font-black">0s</p>
+            </div>
+            <div class="bg-white custom-border rounded-2xl p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <p class="text-[10px] font-black text-gray-400 uppercase">平均每題用時</p>
+                <p id="res-avg-time" class="text-2xl font-black text-red-500">0s</p>
+            </div>
+        </div>
+
+        <div class="bg-white custom-border rounded-[20px] sm:rounded-[30px] overflow-hidden shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] border-4 border-black">
+            <div class="bg-black text-white p-3 sm:p-4 flex justify-between items-center px-4 sm:px-8">
+                <span class="font-black tracking-widest text-xs sm:text-sm uppercase">單字詳情對照</span>
+                <span id="res-score" class="font-black text-yellow-400 italic text-sm sm:text-base">分數: 0</span>
+            </div>
+            <div class="max-h-[280px] sm:max-h-[400px] overflow-x-auto overflow-y-auto custom-scrollbar">
+                <table class="w-full border-collapse min-w-[320px]">
+                    <thead class="bg-gray-100 border-b-2 border-black sticky top-0 z-10">
+                        <tr>
+                            <th class="p-3 sm:p-4 text-left font-black uppercase text-[10px] sm:text-xs">結果 / 正確單字</th>
+                            <th class="p-3 sm:p-4 text-left font-black uppercase text-[10px] sm:text-xs">你的回答</th>
+                            <th class="p-3 sm:p-4 text-right font-black uppercase text-[10px] sm:text-xs">用時</th>
+                        </tr>
+                    </thead>
+                    <tbody id="review-table-body" class="divide-y-2 divide-black"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-8 sm:mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+            <button onclick="location.reload()" class="bg-white custom-border px-6 sm:px-8 py-3 sm:py-4 font-black text-sm sm:text-base shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 active:translate-y-0.5 transition-all min-h-[48px]">再測一次</button>
+            <a href="/quiz/select-mode/" class="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-black text-sm sm:text-base shadow-[6px_6px_0px_0px_rgba(239,68,68,1)] hover:-translate-y-1 active:translate-y-0.5 transition-all text-center min-h-[48px] flex items-center justify-center">返回模式選擇</a>
+        </div>
+    </div>
+</main>
+
+<script>
+    const totalSteps = 100;
+    let currentStep = 0;
+    let quizHistory = []; 
+    let isProcessing = false;
+    let correctCount = 0;
+    let quizStartTime = null;      
+    let questionStartTime = null;  
+
+    document.addEventListener('DOMContentLoaded', () => {
+        quizStartTime = Date.now();
+        loadNextQuiz();
+    });
+
+    function loadNextQuiz() {
+        if (currentStep >= totalSteps) {
+            showResults();
+            return;
+        }
+        fetch('/quiz/api/get_data/')
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) return;
+                renderQuiz(data);
+            });
+    }
+
+    function renderQuiz(data) {
+        currentStep++;
+        const percent = (currentStep / totalSteps) * 100;
+        document.getElementById('progress-bar').style.width = `${percent}%`;
+        document.getElementById('question-text').innerText = data.target_def;
+
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        container.classList.remove('quiz-locked');
+
+        const shield = document.getElementById('click-shield');
+        shield.style.pointerEvents = "none";
+
+        data.options.forEach(opt => {
+            const btn = document.createElement('div'); // 不再使用 <button>，讓只抓 button 的腳本失效
+
+            // 為每個選項建立隨機 class / data 屬性，增加腳本選擇器難度
+            const randKey = Math.random().toString(36).slice(2, 8);
+            const randClass = `opt-${randKey}`;
+            btn.className = `option-btn ${randClass} group relative bg-white border-4 border-black p-4 sm:p-6 rounded-[16px] sm:rounded-[24px] text-xl sm:text-2xl font-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-sky-50 transition-all active:translate-y-1 active:shadow-none min-h-[52px] flex items-center justify-center break-words cursor-pointer`;
+            btn.dataset.rand = randKey;
+            btn.setAttribute('role', 'button');
+            btn.setAttribute('tabindex', '0');
+
+            // 額外包一層無語意 wrapper，讓 DOM 結構較難被固定腳本綁死
+            btn.innerHTML = `
+                <span class="wrap-a">
+                    <span class="wrap-b">
+                        <span class="relative z-10">${opt.word}</span>
+                    </span>
+                </span>
+            `;
+
+            // 注意：將 opt.id / 正確答案 ID 傳入後端驗證用
+            const onSelect = () => handleAnswer(opt.id, data.correct_id, btn, data.target_word, data.target_def);
+            btn.onclick = onSelect;
+            btn.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelect();
+                }
+            };
+
+            container.appendChild(btn);
+        });
+
+        setTimeout(() => {
+            questionStartTime = Date.now(); 
+            isProcessing = false; 
+        }, 100); 
+    }
+
+    function handleAnswer(selectedId, correctId, btnElement, correctWord, def) {
+        if (isProcessing) return; 
+        isProcessing = true; 
+
+        const endTime = Date.now();
+        const startTime = questionStartTime || endTime;
+        const timeSpent = parseFloat(((endTime - startTime) / 1000).toFixed(1));
+        const isCorrect = String(selectedId) === String(correctId);
+        
+        const shield = document.getElementById('click-shield');
+        shield.style.pointerEvents = "auto";
+        
+        if (isCorrect) {
+            correctCount++; 
+            btnElement.classList.add('btn-correct');
+        } else {
+            btnElement.classList.add('btn-wrong');
+        }
+
+        // --- 重點：儲存使用者選的內容與正確答案（含 selected_option 供後端驗證防刷分）---
+        quizHistory.push({
+            word_id: correctId,
+            correct_word: correctWord,      // 正確答案
+            user_answer: btnElement.innerText, // 使用者回答的文字
+            selected_option: selectedId,    // 使用者點選的選項 ID，後端用來驗證是否真的答對
+            isCorrect: isCorrect,
+            timeSpent: Math.max(0.1, timeSpent),
+            question_order: quizHistory.length + 1
+        });
+
+        setTimeout(() => {
+            loadNextQuiz(); 
+        }, 600);
+    }
+
+    function showResults() {
+        const totalReactionTime = quizHistory.reduce((sum, item) => sum + item.timeSpent, 0).toFixed(1);
+        const avgTime = (totalReactionTime / totalSteps).toFixed(1);
+        const finalScore = Math.round((correctCount / totalSteps) * 100);
+
+        document.getElementById('quiz-box').classList.add('hidden');
+        document.getElementById('result-box').classList.remove('hidden');
+
+        document.getElementById('res-total-time').innerText = totalReactionTime + 's';
+        document.getElementById('res-avg-time').innerText = avgTime + 's';
+        document.getElementById('res-score').innerText = `Score: ${finalScore}`;
+
+        const tableBody = document.getElementById('review-table-body');
+        // 確保 tableBody 所在的 table 標籤裡沒有 thead，或者直接清空
+        // 這裡直接生成純資料行，並移除背景色干擾
+        tableBody.innerHTML = quizHistory.map((item, index) => `
+            <tr class="hover:bg-sky-50 transition-colors ${index === 0 ? '' : 'border-t-2 border-black'}">
+                <td class="p-5">
+                    <div class="flex items-center gap-4">
+                        <span class="text-2xl ${item.isCorrect ? 'text-green-500' : 'text-red-500'} font-black">
+                            ${item.isCorrect ? '✓' : '✗'}
+                        </span>
+                        <div>
+                            <p class="text-[10px] font-black text-gray-400 uppercase leading-none mb-1">正確答案 Correct</p>
+                            <p class="font-black text-2xl text-black">${item.correct_word}</p>
+                        </div>
+                    </div>
+                </td>
+                <td class="p-5">
+                    <div>
+                        <p class="text-[10px] font-black text-gray-400 uppercase leading-none mb-1">你的回答 Yours</p>
+                        <p class="font-bold ${item.isCorrect ? 'text-green-600' : 'text-red-500'}">
+                            ${item.isCorrect ? '正確' : item.user_answer}
+                        </p>
+                    </div>
+                </td>
+                <td class="p-5 text-right">
+                    <p class="text-[10px] font-black text-gray-400 uppercase leading-none mb-1">用時</p>
+                    <p class="font-black italic text-gray-400">${item.timeSpent}s</p>
+                </td>
+            </tr>
+        `).join('');
+
+        fetch('/quiz/api/submit/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': 'kLR9PqNdYh1okOxmmRyvV7mNXHFBO7zqCJlPBUDj40EjqHtYun15X1MyIYB0iYef' },
+            body: JSON.stringify({ 
+                score: finalScore, 
+                total_time: parseFloat(totalReactionTime), 
+                correct_count: correctCount, 
+                total_questions: totalSteps, 
+                history: quizHistory 
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === 'success') {
+                document.getElementById('res-exp').innerText = `+${data.exp_gained}`;
+                document.getElementById('res-coin').innerText = `+${data.coin_gained}`;
+            }
+        });
+    }
+
+    function confirmExit() {
+        if (confirm("確定要離開測驗嗎？進度將不會儲存。")) {
+            window.location.href = "/quiz/select-mode/";
+        }
+    }
+</script>
+
+<style>
+    body { user-select: none; -webkit-user-select: none; }
+    .custom-border { border: 4px solid black; }
+    .italic-text { font-style: italic; }
+    
+    .btn-correct {
+        background-color: #4ade80 !important;
+        color: white !important;
+        border-color: #22c55e !important;
+        animation: pulse 0.4s ease-in-out;
+    }
+
+    .btn-wrong {
+        background-color: #f87171 !important;
+        color: white !important;
+        border-color: #ef4444 !important;
+        animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-8px); }
+        75% { transform: translateX(8px); }
+    }
+
+    /* 滾動條樣式 */
+    .custom-scrollbar::-webkit-scrollbar { width: 10px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-left: 2px solid black; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: black; border-radius: 0px; }
+</style>
+
+    </main>
+
+    <footer class="max-w-6xl mx-auto mt-12 sm:mt-20 mb-8 sm:mb-10 text-center px-2">
+        <div class="inline-block bg-white custom-border px-4 py-3 sm:px-8 sm:py-4 rounded-full font-black text-sm sm:text-base shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            問題回報及意見 - <span class="text-sky-500"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b8cad7dfddcaf8c1d08f88888896d7cadf">[email&#160;protected]</a></span>
+        </div>
+    </footer>
+
+    
+    <div id="announcement-modal" class="fixed inset-0 z-50 hidden items-center justify-center" data-announcement-ids="5,4">
+        <div class="absolute inset-0 bg-black/50" onclick="closeAnnouncementModal()"></div>
+        <div class="relative bg-white custom-border rounded-[24px] sm:rounded-[32px] max-w-xl w-[94%] max-h-[90vh] flex flex-col p-4 sm:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div class="flex items-start justify-between mb-4">
+                <div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">最新公告</p>
+                    <h2 class="text-xl font-black text-gray-900 break-words">公告中心</h2>
+                </div>
+                <button type="button"
+                        onclick="closeAnnouncementModal()"
+                        class="ml-4 custom-border rounded-full w-8 h-8 flex items-center justify-center bg-gray-100 text-gray-700 text-sm font-black hover:bg-gray-200 transition-colors">
+                    ✕
+                </button>
+            </div>
+
+            <div class="inner-border rounded-2xl bg-sky-50/70 max-h-[50vh] sm:max-h-80 overflow-y-auto custom-scrollbar divide-y divide-sky-100 flex-1 min-h-0">
+                
+                    <div class="announcement-item">
+                        <button type="button"
+                                class="w-full flex items-center justify-between px-4 py-3 text-left">
+                            <div>
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">
+                                    2026-03-15 15:16
+                                    
+                                </p>
+                                <p class="text-sm md:text-base font-black text-gray-900 line-clamp-1">
+                                    測驗系統異常修復與作弊成績修正
+                                </p>
+                            </div>
+                            <span class="ml-3 flex-shrink-0 custom-border w-7 h-7 rounded-full flex items-center justify-center bg-white text-xs font-black announcement-toggle-icon">
+                                +
+                            </span>
+                        </button>
+                        <div class="px-4 pb-3 hidden announcement-content">
+                            <div class="text-sm leading-relaxed text-gray-800">
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="announcement-item">
+                        <button type="button"
+                                class="w-full flex items-center justify-between px-4 py-3 text-left">
+                            <div>
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">
+                                    2026-03-12 03:33
+                                    
+                                </p>
+                                <p class="text-sm md:text-base font-black text-gray-900 line-clamp-1">
+                                    系統維護說明與開發進度預告
+                                </p>
+                            </div>
+                            <span class="ml-3 flex-shrink-0 custom-border w-7 h-7 rounded-full flex items-center justify-center bg-white text-xs font-black announcement-toggle-icon">
+                                +
+                            </span>
+                        </button>
+                        <div class="px-4 pb-3 hidden announcement-content">
+                            <div class="text-sm leading-relaxed text-gray-800">
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+
+            <div class="mt-4 flex items-center justify-end text-xs text-gray-500">
+                <button type="button"
+                        onclick="closeAnnouncementModal()"
+                        class="custom-border px-4 py-1.5 rounded-xl bg-sky-500 text-white font-black text-xs shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0.5 transition-all">
+                    關閉
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function openAnnouncementModal() {
+            const modal = document.getElementById('announcement-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function closeAnnouncementModal() {
+            const modal = document.getElementById('announcement-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                var idsStr = modal.getAttribute('data-announcement-ids');
+                if (idsStr) {
+                    var ids = idsStr.split(',').map(function (x) { return parseInt(x, 10); }).filter(function (n) { return !isNaN(n); });
+                    if (ids.length) {
+                        var meta = document.querySelector('meta[name="csrf-token"]');
+                        var token = meta ? meta.getAttribute('content') : '';
+                        fetch('/api/announcements-mark-read/', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+                            body: JSON.stringify({ announcement_ids: ids })
+                        }).then(function () {
+                            var dot = document.getElementById('announcement-dot');
+                            if (dot) dot.remove();
+                        });
+                    }
+                }
+            }
+        }
+        
+        // 公告摺疊邏輯：全部預設收合，點標題展開 / 收合
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('#announcement-modal .announcement-item');
+            items.forEach(function (item) {
+                const headerBtn = item.querySelector('button');
+                const content = item.querySelector('.announcement-content');
+                const icon = item.querySelector('.announcement-toggle-icon');
+
+                if (!headerBtn || !content || !icon) return;
+
+                headerBtn.addEventListener('click', function () {
+                    const isOpen = !content.classList.contains('hidden');
+
+                    // 先全部收合
+                    items.forEach(function (it) {
+                        const c = it.querySelector('.announcement-content');
+                        const ic = it.querySelector('.announcement-toggle-icon');
+                        if (c && ic) {
+                            c.classList.add('hidden');
+                            ic.textContent = '+';
+                        }
+                    });
+
+                    // 如果原本是收合，現在展開這一個
+                    if (!isOpen) {
+                        content.classList.remove('hidden');
+                        icon.textContent = '−';
+                    }
+                });
+            });
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"2b4ddbb062e742ecab157af10139a277","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+<style>
+    /* 全域禁用打字游標與文字選取 */
+    body {
+        user-select: none;         /* 防止文字被藍色反白 */
+        -webkit-user-select: none;  /* 針對 Safari */
+        cursor: default;           /* 強制預設游標為箭頭 */
+    }
+
+    /* 確保所有可點擊元素（按鈕、連結）依然顯示手指游標 */
+    button, 
+    a, 
+    [onclick], 
+    .cursor-pointer {
+        cursor: pointer !important;
+    }
+
+    /* 如果有需要輸入文字的地方（如登入框、搜尋框），必須恢復游標 */
+    input, 
+    textarea, 
+    [contenteditable="true"] {
+        user-select: text !important;
+        -webkit-user-select: text !important;
+        cursor: text !important; /* 恢復打字游標 */
+    }
+</style>
