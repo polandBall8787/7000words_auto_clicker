@@ -1,23 +1,52 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const toggleBtn = document.getElementById('toggle_btn');
     const statusText = document.getElementById('status');
-    
     let isRunning = false;
 
-    // --- 新增：初始化偵測 ---
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    
-    // 主動問 Content Script 狀態
-    chrome.tabs.sendMessage(tab.id, { action: "getStatus" }, (res) => {
-        if (chrome.runtime.lastError) return; // 避免在非目標網頁出錯
-        
-        if (res && res.isRunning) {
-            isRunning = true;
-            updateUI(true); // 把更新介面的邏輯抽成函式比較乾淨
-        }
+    // 取得當前分頁的函式
+    async function getCurrentTab() {
+        let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        return tab;
+    }
+
+    const tab = await getCurrentTab();
+
+    // --- 1. 初始化：詢問 Content Script 狀態 ---
+    if (tab && tab.id) {
+        chrome.tabs.sendMessage(tab.id, { action: "getStatus" }, (res) => {
+            // 檢查是否通訊成功
+            if (chrome.runtime.lastError) {
+                console.warn("尚未偵測到腳本，可能需要重新整理網頁。");
+                statusText.innerText = "狀態：請整理網頁";
+                return;
+            }
+            if (res && res.isRunning) {
+                isRunning = true;
+                updateUI(true);
+            }
+        });
+    }
+
+    // --- 2. 切換邏輯 ---
+    toggleBtn.addEventListener('click', async () => {
+        const currentTab = await getCurrentTab(); // 點擊時重新確認一次分頁
+        if (!currentTab || !currentTab.id) return;
+
+        isRunning = !isRunning;
+        updateUI(isRunning);
+
+        chrome.tabs.sendMessage(currentTab.id, {
+            action: "toggleAuto",
+            state: isRunning
+        }, (response) => {
+            if (chrome.runtime.lastError) {
+                alert("通訊失敗！請重新整理目標網頁後再試一次。");
+                updateUI(false);
+                isRunning = false;
+            }
+        });
     });
 
-    // 把更新介面的樣子寫在一起，避免重複寫兩次
     function updateUI(running) {
         if (running) {
             toggleBtn.innerText = "停止自動答題";
@@ -31,20 +60,4 @@ document.addEventListener('DOMContentLoaded', async () => {
             statusText.className = "status-off";
         }
     }
-
-    toggleBtn.addEventListener('click', async () => {
-        // 防呆：確認在目標網站
-        if (!tab.url.includes("yh7000.org/quiz/play/")) {
-            alert("請在測驗頁面中啟動外掛！");
-            return;
-        }
-
-        isRunning = !isRunning;
-        updateUI(isRunning); // 使用我們抽出來的函式
-
-        chrome.tabs.sendMessage(tab.id, {
-            action: "toggleAuto",
-            state: isRunning
-        });
-    });
 });

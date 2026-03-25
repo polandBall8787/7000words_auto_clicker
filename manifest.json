@@ -2,16 +2,17 @@
   "manifest_version": 3,
   "name": "7000單自動點擊",
   "version": "2.0",
-  "permissions": ["activeTab", "scripting", "downloads"],
-  "host_permissions": ["https://yh7000.org/quiz/play/*"],
+  "permissions": ["storage", "activeTab", "scripting", "downloads"],
+  "host_permissions": ["https://yh7000.org/*"],
   "action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
-      "matches": ["https://yh7000.org/quiz/play/*"],
-      "js": ["content.js"],
-      "run_at": "document_start"
+      "matches": [
+        "https://yh7000.org/*"
+      ],
+      "js": ["content.js"]
     }
   ],
   "background": {
